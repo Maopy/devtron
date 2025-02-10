@@ -1,6 +1,6 @@
 {
   "name": "devtron-next",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Electron DevTools Extension",
   "main": "./api.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "devtools",
     "developer tools"
   ],
-  "homepage": "https://github.com/electron/devtron#readme",
+  "homepage": "https://github.com/maopy/devtron#readme",
   "devDependencies": {
     "body-parser": "^1.15.0",
     "browserify": "^13.0.0",
@@ -44,8 +44,7 @@
   },
   "dependencies": {
     "accessibility-developer-tools": "^2.11.0",
-    "highlight.js": "^9.3.0",
-    "humanize-plus": "^1.8.1"
+    "highlight.js": "^9.3.0"
   },
   "standard": {
     "ignore": [

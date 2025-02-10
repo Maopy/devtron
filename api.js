@@ -1,16 +1,16 @@
-const electron = require('electron')
-
 exports.install = () => {
   if (process.type === 'renderer') {
     console.log(`Installing Devtron from ${__dirname}`)
-    if (electron.remote.BrowserWindow.getDevToolsExtensions &&
-        electron.remote.BrowserWindow.getDevToolsExtensions().devtron) return true
-    return electron.remote.BrowserWindow.addDevToolsExtension(__dirname)
+    const { session } = require('@electron/remote')
+    const extensions = session.defaultSession.getAllExtensions()
+    if (extensions.find(extension => extension.name === 'devtron')) return true
+    return session.defaultSession.loadExtension(__dirname)
   } else if (process.type === 'browser') {
     console.log(`Installing Devtron from ${__dirname}`)
-    if (electron.BrowserWindow.getDevToolsExtensions &&
-        electron.BrowserWindow.getDevToolsExtensions().devtron) return true
-    return electron.BrowserWindow.addDevToolsExtension(__dirname)
+    const { session } = require('electron')
+    const extensions = session.defaultSession.getAllExtensions()
+    if (extensions.find(extension => extension.name === 'devtron')) return true
+    return session.defaultSession.loadExtension(__dirname)
   } else {
     throw new Error('Devtron can only be installed from an Electron process.')
   }
@@ -19,10 +19,18 @@ exports.install = () => {
 exports.uninstall = () => {
   if (process.type === 'renderer') {
     console.log(`Uninstalling Devtron from ${__dirname}`)
-    return electron.remote.BrowserWindow.removeDevToolsExtension('devtron')
+    const { session } = require('@electron/remote')
+    const extensions = session.defaultSession.getAllExtensions()
+    const extension = extensions.find(extension => extension.name === 'devtron')
+    if (!extension) return false
+    return session.defaultSession.removeExtension(extension.id)
   } else if (process.type === 'browser') {
     console.log(`Uninstalling Devtron from ${__dirname}`)
-    return electron.BrowserWindow.removeDevToolsExtension('devtron')
+    const { session } = require('electron')
+    const extensions = session.defaultSession.getAllExtensions()
+    const extension = extensions.find(extension => extension.name === 'devtron')
+    if (!extension) return false
+    return session.defaultSession.removeExtension(extension.id)
   } else {
     throw new Error('Devtron can only be uninstalled from an Electron process.')
   }

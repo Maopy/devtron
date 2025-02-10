@@ -25,7 +25,7 @@ describe('Event Helpers', function () {
       return Event.getEvents().then((events) => {
         expect(Object.keys(events).length).to.equal(7)
 
-        const browserWindowEvents = events['electron.remote.getCurrentWindow()']
+        const browserWindowEvents = events['@electron/remote.getCurrentWindow()']
         expect(Object.keys(browserWindowEvents).length).to.equal(1)
         expect(browserWindowEvents['browser-window'].length).to.equal(1)
         expect(browserWindowEvents['browser-window'][0]).to.equal('function () { return 3 }')
