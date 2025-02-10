@@ -1,6 +1,6 @@
 {
-  "name": "devtron",
-  "version": "1.4.0",
+  "name": "devtron-next",
+  "version": "2.0.0-alpha.1",
   "description": "Electron DevTools Extension",
   "main": "./api.js",
   "scripts": {
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron/devtron.git"
+    "url": "git+https://github.com/maopy/devtron.git"
   },
-  "author": "Kevin Sawicki",
+  "author": "Maopy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/electron/devtron/issues"
+    "url": "https://github.com/maopy/devtron/issues"
   },
   "keywords": [
     "Electron",

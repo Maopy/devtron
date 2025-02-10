@@ -1,11 +1,13 @@
 {
   "name": "devtron",
   "version": "1.0",
+  "manifest_version": 2,
   "devtools_page": "static/devtron.html",
   "content_scripts": [
     {
-      "matches": ["*"],
+      "matches": ["<all_urls>"],
       "js": ["out/browser-globals.js"]
     }
-  ]
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'"
 }
