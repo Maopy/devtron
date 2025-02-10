@@ -1,21 +1,18 @@
 
-> 🚨 **WARNING:** Devtron is currently **unmaintained**. If you're interested in becoming a maintainer, see Issue [#200](https://github.com/electron-userland/devtron/issues/200) for more information.
 # <img src="https://cloud.githubusercontent.com/assets/378023/15063285/cf554e40-1383-11e6-9b9c-45d381b03f9f.png" width="60px" align="center" alt="Devtron icon"> Devtron
 
-An [Electron](http://electron.atom.io) [DevTools](https://developer.chrome.com/devtools)
+An [Electron](https://www.electronjs.org/) [DevTools](https://developer.chrome.com/docs/devtools/)
 extension to help you inspect, monitor, and debug your app.
 
-[![Travis Build Status](https://travis-ci.org/electron/devtron.svg?branch=master)](https://travis-ci.org/electron/devtron)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/t9eqglwos7kyv6w3/branch/master?svg=true)](https://ci.appveyor.com/project/electron-bot/devtron/branch/master)
+<!-- [![Travis Build Status](https://travis-ci.org/electron/devtron.svg?branch=master)](https://travis-ci.org/electron/devtron) -->
+<!-- [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/t9eqglwos7kyv6w3/branch/master?svg=true)](https://ci.appveyor.com/project/electron-bot/devtron/branch/master) -->
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
-[![downloads:?](https://img.shields.io/npm/dm/devtron.svg)](https://www.npmjs.com/packages/devtron)
+[![downloads:?](https://img.shields.io/npm/dm/devtron-next.svg)](https://www.npmjs.com/packages/devtron-next)
 
 ![screenshot](https://cloud.githubusercontent.com/assets/378023/15036521/e3e7cd06-12ca-11e6-8054-ed0455015f05.png)
 
 ## Features
 
-  * **Require graph** to help you visualize your app's internal and external
-    library dependencies in both the main and renderer processes.
   * **IPC monitor** to track and inspect the messages sent and received
     between the renderer and main processes in your app.
   * **Event inspector** that shows the events and listeners that are registered
@@ -27,14 +24,14 @@ extension to help you inspect, monitor, and debug your app.
 ## Installing
 
 ```sh
-npm install --save-dev devtron
+npm install --save-dev devtron-next
 ```
 
 Then execute the following from the Console tab of your running Electron app's
 developer tools:
 
 ```js
-require('devtron').install()
+require('devtron-next').install()
 ```
 
 You should then see a `Devtron` tab added.
@@ -42,7 +39,7 @@ You should then see a `Devtron` tab added.
 ## Disabled Node Integration
 
 If your application's `BrowserWindow` was created with `nodeIntegration` set
-to `false` then you will need to expose some globals via a [preload](http://electron.atom.io/docs/api/browser-window/#new-browserwindowoptions)
+to `false` then you will need to expose some globals via a [preload](https://www.electronjs.org/docs/latest/api/browser-window/#new-browserwindowoptions)
 script to allow Devtron access to Electron APIs:
 
 ```js
@@ -56,7 +53,7 @@ check to ensure these variables aren't exposed in production.
 ## Developing locally
 
 ```
-git clone https://github.com/electron/devtron
+git clone https://github.com/maopy/devtron
 cd devtron
 npm install
 npm start
@@ -98,7 +95,7 @@ Chrome tab that will talk remotely to a running Electron app over HTTP.
   
 ### Additional Notes
 
-- `require('devtron').install()` cannot be called before the `ready` event of the `app` module has been emitted.
+- `require('devtron-next').install()` cannot be called before the `ready` event of the `app` module has been emitted.
 
 #### Webpack
 
@@ -161,7 +158,7 @@ config.plugins = [
 ## Contributing
 
 Have an idea for something this extension could do to make debugging Electron
-apps easier? Please [open an issue](https://github.com/electron/devtron/issues/new).
+apps easier? Please [open an issue](https://github.com/maopy/devtron/issues/new).
 
 Pull requests are also welcome and appreciated. Run `npm test` to run the
 existing tests. This project uses the [standard JavaScript style](http://standardjs.com).

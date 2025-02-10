@@ -18,19 +18,6 @@
       </div>
     </div>
 
-    <template id="requires-table-row">
-      <tr>
-        <td class="row-module" data-field="moduleName"></td>
-        <td class="row-version" data-field="moduleVersion"></td>
-        <td class="row-size" data-field="fileSize"></td>
-        <td class="row-file" data-field="pathSection">
-          <span class="disclosure-arrow" data-field="disclosure"></span>
-          <span data-field="fileName"></span>
-          <span class="row-directory" data-field="moduleDirectory"></span>
-        </td>
-      </tr>
-    </template>
-
     <template id="ipc-table-row">
       <tr>
         <td class="row-event-name">
@@ -93,61 +80,6 @@
           <a data-field="selectorPath" href="#"></a>
         </td>
       </tr>
-    </template>
-
-    <template id="modules-view">
-      <div class="pane" data-pane="graph">
-        <header class="toolbar toolbar-header">
-          <div class="toolbar-actions">
-            <button data-field="loadButton" class="btn btn-default pull-right">
-              <span class="toolbar-icon toolbar-icon-cycle"></span>
-              Load Graph
-            </button>
-            <input data-field="searchBox" class="form-control search-box pull-right" type="text" placeholder="Search modules">
-          </div>
-        </header>
-
-        <div class="tab-group">
-          <div data-field="renderProcessTab" class="tab-item active">
-            Renderer Process
-          </div>
-          <div data-field="mainProcessTab" class="tab-item">
-            Main Process
-          </div>
-        </div>
-
-        <div class="table-scroller table-scroller-with-tabs">
-          <table data-field="renderProcessTable" class="table-striped" tabindex="-1">
-            <thead>
-              <th>Module</th>
-              <th>Version</th>
-              <th>Size</th>
-              <th>File</th>
-            </thead>
-            <tbody data-field="renderRequireRows" tabindex="-1">
-            </tbody>
-          </table>
-
-          <table data-field="mainProcessTable" class="table-striped hidden" tabindex="-1">
-            <thead>
-              <th>Module</th>
-              <th>Version</th>
-              <th>Size</th>
-              <th>File</th>
-            </thead>
-            <tbody data-field="mainRequireRows" tabindex="-1">
-            </tbody>
-          </table>
-
-          <div class="table-description" data-field="tableDescription">
-            This table shows all of the JavaScript files loaded via <code>require</code>
-            starting from your application's main entry point.
-            <br>
-            Click Load Graph to generate a require graph for the renderer process
-            and the main process.
-          </div>
-        </div>
-      </div>
     </template>
 
     <template id="events-view">
@@ -432,10 +364,6 @@
     <template id="sidebar-view">
       <div class="pane pane-sm sidebar">
         <ul class="list-group">
-          <li class="list-group-item active" data-field="requireLink" data-pane-link="graph">
-            <div class="sidebar-icon sidebar-icon-graph"></div>
-            Require Graph
-          </li>
           <li class="list-group-item" data-field="eventsLink" data-pane-link="listeners">
             <div class="sidebar-icon sidebar-icon-events"></div>
             Event Listeners
