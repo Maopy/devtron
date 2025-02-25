@@ -1,19 +1,25 @@
 {
   "name": "devtron-next",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "description": "Electron DevTools Extension",
-  "main": "./api.js",
   "scripts": {
+    "clean:bundle": "rimraf dist && turbo clean:bundle",
+    "base-build": "pnpm clean:bundle && turbo build",
+    "build": "pnpm set-global-env && pnpm base-build",
+    "base-dev": "pnpm clean:bundle && turbo ready && turbo watch dev --concurrency 20",
+    "dev": "pnpm set-global-env CLI_CEB_DEV=true && pnpm base-dev",
+    "dev:firefox": "pnpm set-global-env CLI_CEB_DEV=true CLI_CEB_FIREFOX=true && pnpm base-dev",
     "prepublish": "browserify lib/*.js -o out/index.js --ignore-missing --entry lib/index.js && browserify lib/browser-globals.js -o out/browser-globals.js",
     "start": "browserify lib/browser-globals.js -o out/browser-globals.js && watchify lib/*.js -o out/index.js --ignore-missing --entry lib/index.js --verbose",
     "test": "mocha test/unit/*-test.js test/integration/*-test.js && standard",
-    "prepack": "check-for-leaks",
-    "prepush": "check-for-leaks"
+    "update-version": "bash bash-scripts/update_version.sh",
+    "set-global-env": "bash bash-scripts/set_global_env.sh"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maopy/devtron.git"
   },
+  "type": "module",
   "author": "Maopy",
   "license": "MIT",
   "bugs": {
@@ -21,34 +27,29 @@
   },
   "keywords": [
     "Electron",
-    "Chrome",
-    "Chromium",
-    "devtools",
-    "developer tools"
+    "devtools"
   ],
   "homepage": "https://github.com/maopy/devtron#readme",
   "devDependencies": {
-    "body-parser": "^1.15.0",
-    "browserify": "^13.0.0",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.3.0",
-    "check-for-leaks": "^1.2.0",
-    "cors": "^2.7.1",
-    "electron-prebuilt": "~1.2.2",
-    "express": "^4.13.4",
-    "husky": "^0.14.3",
-    "mocha": "^2.4.5",
-    "spectron": "~3.2.3",
-    "standard": "^6.0.8",
-    "watchify": "^3.7.0"
+    "@types/chrome": "^0.0.306",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "deepmerge": "^4.3.1",
+    "husky": "^9.1.4",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^4.0.8",
+    "turbo": "^2.4.2",
+    "typescript": "^5.8.1-rc",
+    "vite": "^6.2.0"
   },
   "dependencies": {
-    "accessibility-developer-tools": "^2.11.0",
-    "highlight.js": "^9.3.0"
+    "highlight.js": "^11.11.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
-  "standard": {
-    "ignore": [
-      "/out/index.js"
-    ]
+  "packageManager": "pnpm@10.4.1",
+  "engines": {
+    "node": ">=22.14.0"
   }
 }
