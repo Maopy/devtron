@@ -88,13 +88,12 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
   // Register life cycle methods
   const get = async (): Promise<D> => {
     checkStoragePermission(storageEnum);
-    const value = await chrome?.storage[storageEnum].get([key]);
-
-    if (!value) {
-      return fallback;
-    }
-
-    return deserialize(value[key]) ?? fallback;
+    return new Promise((resolve) => {
+      chrome?.storage[storageEnum].get(key, (result) => {
+        const value = result[key];
+        resolve(value ? deserialize(value) : fallback);
+      });
+    });
   };
 
   const _emitChange = () => {

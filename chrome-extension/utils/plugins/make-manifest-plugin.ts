@@ -7,7 +7,7 @@ import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
 import { IS_DEV, IS_FIREFOX } from '@extension/env';
 
-const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
+const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifestV2.js');
 const refreshFilePath = resolve(
   import.meta.dirname,
   '..',

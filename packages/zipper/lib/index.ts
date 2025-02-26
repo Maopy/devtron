@@ -61,7 +61,7 @@ export const zipBundle = async (
   const fileList = await fg(
     [
       '**/*', // Pick all nested files
-      ...(!withMaps ? ['!**/*.{js.map,css.map}'] : []), // Exclude source maps conditionally
+      ...(!withMaps ? ['!**/(*.js.map|*.css.map)'] : []), // Exclude source maps conditionally
     ],
     {
       cwd: distDirectory,

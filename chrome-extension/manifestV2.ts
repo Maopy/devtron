@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import type { ManifestV2 } from '@extension/dev-utils';
 
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
 
@@ -11,9 +12,6 @@ const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
  * Must be unique to your extension to upload to addons.mozilla.org
  * (you can delete if you only want a chrome extension)
  *
- * @prop permissions
- * Firefox doesn't support sidePanel (It will be deleted in manifest parser)
- *
  * @prop content_scripts
  * css: ['content.css'], // public folder
  */
@@ -21,39 +19,13 @@ const manifest = {
   manifest_version: 2,
   default_locale: 'en',
   name: '__MSG_extensionName__',
-  browser_specific_settings: {
-    gecko: {
-      id: 'example@example.com',
-      strict_min_version: '109.0',
-    },
-  },
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
-  host_permissions: ['<all_urls>'],
-  permissions: ['storage', 'scripting', 'tabs', 'notifications', 'sidePanel'],
-  options_page: 'options/index.html',
-  background: {
-    scripts: ['background.js'],
-  },
-  action: {
-    default_popup: 'popup/index.html',
-    default_icon: 'icon-34.png',
-  },
-  chrome_url_overrides: {
-    newtab: 'new-tab/index.html',
-  },
+  permissions: ['storage'],
   icons: {
     128: 'icon-128.png',
   },
   content_scripts: [
-    {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content/index.iife.js'],
-    },
-    {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content-ui/index.iife.js'],
-    },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
       css: ['content.css'],
@@ -61,9 +33,7 @@ const manifest = {
   ],
   devtools_page: 'devtools/index.html',
   web_accessible_resources: ['*.js', '*.css', '*.svg', 'icon-128.png', 'icon-34.png'],
-  side_panel: {
-    default_path: 'side-panel/index.html',
-  },
-} satisfies chrome.runtime.ManifestV2;
+  content_security_policy: 'script-src \'self\'; object-src \'self\';'
+} satisfies ManifestV2;
 
 export default manifest;

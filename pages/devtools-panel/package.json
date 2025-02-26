@@ -1,7 +1,7 @@
 {
-  "name": "@extension/devtools",
+  "name": "@extension/devtools-panel",
   "version": "2.1.0",
-  "description": "chrome extension - devtools",
+  "description": "chrome extension - devtools panel",
   "type": "module",
   "private": true,
   "sideEffects": true,
@@ -20,10 +20,18 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@extension/shared": "workspace:*"
+    "@extension/shared": "workspace:*",
+    "@extension/storage": "workspace:*",
+    "@extension/i18n": "workspace:*"
   },
   "devDependencies": {
+    "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   }
 }
