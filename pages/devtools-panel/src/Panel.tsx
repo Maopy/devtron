@@ -1,34 +1,29 @@
 import { useState } from 'react';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-// import { exampleThemeStorage } from '@extension/storage';
-// import { t } from '@extension/i18n';
+import { withErrorBoundary, withSuspense } from '@extension/shared';
+import { ThemeProvider } from '@/components/theme-provider';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { AppSidebar } from './components/AppSidebar';
+import { AppSidebar } from './components/app-sidebar';
+import { Pane, Panes } from './components/pane';
 
-import '@/Panel.css';
+import '@/panel.css';
 
 const Panel = () => {
-  const [count, setCount] = useState(0)
+  const [activePane, setActivePane] = useState<Pane>('about');
+  const ActivePane = Panes[activePane];
 
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        <h1 className='text-3xl font-bold underline'>Vite + React</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </p>
-        </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-      </main>
-    </SidebarProvider>
+    <ThemeProvider>
+      <SidebarProvider defaultOpen={false}>
+        <AppSidebar
+          onPaneChange={setActivePane}
+          activePane={activePane}
+        />
+        <main>
+          <SidebarTrigger />
+          <ActivePane />
+        </main>
+      </SidebarProvider>
+    </ThemeProvider>
   );
 };
 
