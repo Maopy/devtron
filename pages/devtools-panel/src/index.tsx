@@ -1,6 +1,7 @@
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import '@src/index.css';
-import Panel from '@src/Panel';
+import '@/index.css';
+import Panel from '@/Panel';
 
 function init() {
   const appContainer = document.querySelector('#app-container');
@@ -9,7 +10,11 @@ function init() {
   }
   const root = createRoot(appContainer);
 
-  root.render(<Panel />);
+  root.render(
+    <StrictMode>
+      <Panel />
+    </StrictMode>
+  );
 }
 
 init();
