@@ -1,20 +1,21 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import '@/index.css';
-import Panel from '@/panel';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import '@/index.css'
+import Panel from '@/panel'
 
-function init() {
-  const appContainer = document.querySelector('#app-container');
+async function init () {
+  const appContainer = document.querySelector('#app-container')
   if (!appContainer) {
-    throw new Error('Can not find #app-container');
+    throw new Error('Can not find #app-container')
   }
-  const root = createRoot(appContainer);
+
+  const root = createRoot(appContainer)
 
   root.render(
     <StrictMode>
       <Panel />
     </StrictMode>
-  );
+  )
 }
 
-init();
+init()

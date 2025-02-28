@@ -1,13 +1,13 @@
-import type { StorageEnum } from './enums.js';
+import type { StorageEnum } from './enums.js'
 
-export type ValueOrUpdate<D> = D | ((prev: D) => Promise<D> | D);
+export type ValueOrUpdate<D> = D | ((prev: D) => Promise<D> | D)
 
 export type BaseStorage<D> = {
   get: () => Promise<D>;
   set: (value: ValueOrUpdate<D>) => Promise<void>;
   getSnapshot: () => D | null;
   subscribe: (listener: () => void) => () => void;
-};
+}
 
 export type StorageConfig<D = string> = {
   /**
@@ -42,4 +42,4 @@ export type StorageConfig<D = string> = {
      */
     deserialize: (text: string) => D;
   };
-};
+}

@@ -1,7 +1,7 @@
-import { readFileSync } from 'node:fs';
-import type { ManifestV2 } from '@extension/dev-utils';
+import { readFileSync } from 'node:fs'
+import type { ManifestV2 } from '@extension/dev-utils'
 
-const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'))
 
 /**
  * @prop default_locale
@@ -34,6 +34,6 @@ const manifest = {
   devtools_page: 'devtools/index.html',
   web_accessible_resources: ['*.js', '*.css', '*.svg', 'icon-128.png', 'icon-34.png'],
   content_security_policy: 'script-src \'self\'; object-src \'self\';'
-} satisfies ManifestV2;
+} satisfies ManifestV2
 
-export default manifest;
+export default manifest

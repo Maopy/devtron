@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from "react"
-import { BookAudio, ChevronsLeftRightEllipsis, ShieldAlert, Accessibility, BadgeInfo } from "lucide-react"
-import { Pane } from "./pane"
+import type { Dispatch, SetStateAction } from 'react'
+import { BookAudio, ChevronsLeftRightEllipsis, ShieldAlert, Accessibility, BadgeInfo } from 'lucide-react'
+import type { Pane } from './pane'
 import {
   Sidebar,
   SidebarContent,
@@ -10,33 +10,33 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from '@/components/ui/sidebar'
 
 // Menu items.
 const items = [
   {
-    id: "event-listener",
-    title: "Event Listener",
+    id: 'event-listener',
+    title: 'Event Listener',
     icon: BookAudio,
   },
   {
-    id: "ipc",
-    title: "IPC",
+    id: 'ipc',
+    title: 'IPC',
     icon: ChevronsLeftRightEllipsis,
   },
   {
-    id: "lint",
-    title: "Lint",
+    id: 'lint',
+    title: 'Lint',
     icon: ShieldAlert,
   },
   {
-    id: "accessibility",
-    title: "Accessibility",
+    id: 'accessibility',
+    title: 'Accessibility',
     icon: Accessibility,
   },
   {
-    id: "about",
-    title: "About",
+    id: 'about',
+    title: 'About',
     icon: BadgeInfo,
   },
 ] as const
@@ -46,9 +46,9 @@ interface AppSidebarProps {
   activePane: Pane
 }
 
-export function AppSidebar({ onPaneChange, activePane }: AppSidebarProps) {
+export function AppSidebar ({ onPaneChange, activePane }: AppSidebarProps) {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible='icon'>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Devtron</SidebarGroupLabel>
