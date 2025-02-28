@@ -12,14 +12,16 @@ const Panel = () => {
   const ActivePane = Panes[activePane];
 
   return (
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <SidebarProvider defaultOpen={false}>
         <AppSidebar
           onPaneChange={setActivePane}
           activePane={activePane}
         />
-        <main>
-          <SidebarTrigger />
+        <main className='w-full'>
+          <header className='px-2 border-b border-gray-800'>
+            <SidebarTrigger />
+          </header>
           <ActivePane />
         </main>
       </SidebarProvider>
